@@ -1,0 +1,66 @@
+# score: 0.951
+SEED: 1000
+
+TRAIN:
+  process_num: 4
+  pretrain: false
+  batch_size: 32
+  validatiojn_batch_size: 32
+  accumulation_batch_size: 32
+  log_interval: 10
+  test_interval: 1
+  epoch: 10
+  use_balanced_sampler: true
+  sampler_alpha: 0.4
+  sampler_min_weight: 1.0
+  sampler_max_weight: 20.0
+  sampler_soundscape_boost: 1.3
+  sampler_target_count: 40
+  spec_time_mask_prob: 0.5
+  spec_freq_mask_prob: 0.5
+  spec_time_mask_ratio: 0.2
+  spec_freq_mask_ratio: 0.2
+  init_lr: 0.00025
+  lr_scheduler: cos
+  lr_scheduler_factor: 0.1
+  weight_decay_factor: 5.0e-2
+  vis: false
+  warmup_step: 1000
+  opt: Adamw
+  SWA: -1
+  gradient_clip: -1
+  vis_mixcut: false
+  mix_precision: true
+  compile: true
+
+MODEL:
+  arch: perch_continuous_sed
+  model_path: ./models_perch_cont_sed_extra/
+  height: 256
+  width: 384
+  channel: 3
+  early_stop: -10
+  pretrained_model: null
+  ema: false
+  emb_dim: 1536
+  transformer_dim: 512
+  num_heads: 8
+  num_layers: 4
+  mlp_ratio: 4
+  proj_drop: 0.1
+  attn_drop: 0.0
+  cls_drop: 0.5
+  weights_path: ./perch_torch/perch_v2_pytorch.pth
+  num_context: 4
+  init_lr: 0.00025
+
+DATA:
+  data_file: ../bd26/train.csv
+  extra_data_file: ../bd26/train_bd25_extra.csv
+  extra_audio_dir: ../bd25/train_audio
+  soundscape_file: ../bd26/train_soundscapes_sliced.csv
+  audio_dir: ../bd26/train_audio
+  taxonomy_file: ../bd26/taxonomy.csv
+  sample_submission_file: ../bd26/sample_submission.csv
+  nm2cls_file: nm2cls.json
+  num_classes: 234

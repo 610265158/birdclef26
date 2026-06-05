@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+*.so
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyTorch / Model artifacts
+*.pth
+*.onnx
+*.mnn
+*.npy
+*.pkl
+
+# Logs
+*.log
+
+# Data (large files)
+*.ogg
+*.wav
+*.mp3
+
+# Models directory (training checkpoints)
+/models/
+
+# Embeddings
+embeddings/
+
+# Environment
+.env
+venv/
+.venv/
